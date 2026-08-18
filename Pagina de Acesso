@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pagina de Acesso</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <div class="container">
+    <!-- Painel de temperatura -->
+    <div class="weather-widget">
+      <div class="temp">11°</div>
+      <div class="weather-info">
+        <div class="condition">Sunny</div>
+        <div class="time">11AM</div>
+      </div>
+    </div>
+
+    <!-- Painel de Horas -->
+    <div class="clock-widget">
+      <div class="date">N, 2040 Monday</div>
+      <div class="time">11:11:11</div>
+    </div>
+
+   <!-- Music Player -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+  <style>
+    body{background:#111;color:#eee;font-family:Arial, sans-serif;display:flex;justify-content:center;align-items:center;height:100vh}
+    .player{background:#222;padding:20px 30px;border-radius:14px;box-shadow:0 6px 20px rgba(0,0,0,0.6);text-align:center;width:320px}
+    .player h2{margin-bottom:6px;font-size:22px}
+    .player h3{margin:0;font-size:16px;font-weight:400;color:#bbb}
+    .controls{display:flex;justify-content:center;gap:25px;margin-top:20px}
+    .controls button{background:#333;color:#fff;border:none;padding:14px;border-radius:50%;font-size:18px;cursor:pointer;transition:0.3s}
+    .controls button:hover{background:#555}
+    audio{display:none}
+  </style>
+
+<body>
+  <div class="player">
+    <h2 id="track-title">Black Stones</h2>
+    <h3 id="track-artist">NANA</h3>
+
+    <div class="controls"> 
+      <button class="prev"><i class="fa fa-backward"></i></button>
+      <button class="play-pause"><i class="fa fa-play"></i></button>
+      <button class="next"><i class="fa fa-forward"></i></button>
+    </div>
+
+    <!-- Áudio -->
+    <audio id="audio"></audio>
+  </div>
+
+  <script>
+    const audio = document.getElementById("audio");
+    const playPauseBtn = document.querySelector(".play-pause i");
+    const title = document.getElementById("track-title");
+    const artist = document.getElementById("track-artist");
+
+    // Playlist com duas músicas
+    const playlist = [
+      {src: "black_stones.mp3", title: "NANA", artist: "Black Stones"},
+      {src: "Shadow of love.mp3", title: "NANA", artist: "Shadow of love"}
+    ];
+
+    let currentTrack = 0;
+
+    function loadTrack(index){
+      audio.src = playlist[index].src;
+      title.textContent = playlist[index].title;
+      artist.textContent = playlist[index].artist;
+    }
+
+    function playTrack(){
+      audio.play();
+      playPauseBtn.classList.remove("fa-play");
+      playPauseBtn.classList.add("fa-pause");
+    }
+
+    function pauseTrack(){
+      audio.pause();
+      playPauseBtn.classList.remove("fa-pause");
+      playPauseBtn.classList.add("fa-play");
+    }
+
+    document.querySelector(".play-pause").addEventListener("click", ()=>{
+      if(audio.paused){ playTrack(); } else { pauseTrack(); }
+    });
+
+    document.querySelector(".prev").addEventListener("click", ()=>{
+      currentTrack = (currentTrack - 1 + playlist.length) % playlist.length;
+      loadTrack(currentTrack);
+      playTrack();
+    });
+
+    document.querySelector(".next").addEventListener("click", ()=>{
+      currentTrack = (currentTrack + 1) % playlist.length;
+      loadTrack(currentTrack);
+      playTrack();
+    });
+
+    // Carregar a primeira música ao abrir
+    loadTrack(currentTrack);
+  </script>
+</body>
+
+
+    <!-- Painel de Icones -->
+    <div class="icon-bar">
+    <a href="https://www.netflix.com/br/" class="icon">
+      <img src="netflix-icon.png" alt="Netflix">
+    </a>
+    <a href="https://open.spotify.com/intl-pt" class="icon">
+      <img src="spotify-icon.png" alt="Spotify">
+    </a>
+    <a href="https://www.tumblr.com/" class="icon">
+      <img src="tumblr-icon.png" alt="Tumblr">
+    </a>
+    <a href="https://x.com/?lang=pt-br" class="icon">
+      <img src="x-icon.png" alt="X">
+    </a>
+    <a href="https://br.pinterest.com/" class="icon">
+      <img src="pinterest-icon.png" alt="Pinterest">
+    </a>
+  </div>
+  </div>
+
+  <script src="scripts.js"></script>
+</body>
+</html>
