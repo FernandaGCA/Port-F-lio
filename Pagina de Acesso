@@ -330,3 +330,153 @@ obterLocalizacao();
   <script src="scripts.js"></script>
 </body>
 </html>
+
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #333;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+/* Área que organiza os elementos lado a lado */
+.container {
+  width: 90%;
+  margin: 0 auto;
+
+  display: flex;
+  flex-direction: row;
+
+  justify-content: center;
+  align-items: stretch;
+
+   gap: 20px;
+}
+
+/* Horas */
+.clock-widget {
+  flex: 2;
+  background-color: #222;
+  border-radius: 10px;
+  padding: 20px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.clock-widget .date {
+    font-size: 20px;
+    text-transform: capitalize;
+    margin-bottom: 5px;
+}
+
+.clock-widget .time {
+    font-size: 50px;
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+
+
+/* Player */
+.player {
+  flex: 2;
+  background-color: #222;
+  border-radius: 10px;
+  padding: 20px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+    .player{background:#222;padding:20px 30px;border-radius:14px;box-shadow:0 6px 20px rgba(0,0,0,0.6);text-align:center;width:320px}
+    .player h2{margin-bottom:6px;font-size:22px}
+    .player h3{margin:0;font-size:16px;font-weight:400;color:#bbb}
+    .controls{display:flex;justify-content:center;gap:25px;margin-top:20px}
+    .controls button{background:#333;color:#fff;border:none;padding:14px;border-radius:50%;font-size:18px;cursor:pointer;transition:0.3s}
+    .controls button:hover{background:#555}
+    audio{display:none}
+	
+    .Capa{
+      width:150px;
+      height:150px;
+      object-fit:cover;
+      border-radius:12px;
+      margin:0 auto 18px;
+      display:block;
+      box-shadow:0 5px 15px rgba(0,0,0,0.5);
+    }
+
+
+
+
+/* Terceiro bloco */
+.weather-widget {
+  flex: 2;
+  background-color: #222;
+  border-radius: 10px;
+  padding: 20px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+
+/*   BARRA DE ÍCONES FIXA */
+.icon-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+
+  width: 100%;
+  height: 80px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  gap: 20px;
+  background-color: #222;
+  padding: 10px 20px;
+  box-sizing: border-box;
+  z-index: 9999;
+}
+
+/* Cada ícone */
+.icon-bar .icon {
+  width: 50px;
+  height: 50px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  flex-shrink: 0;
+}
+
+/* Imagem */
+.icon-bar .icon img {
+  width: 50px;
+  height: 50px;
+
+  object-fit: contain;
+
+  transition: transform 0.2s ease;
+}
+
+/* Efeito ao passar o mouse */
+.icon-bar .icon img:hover {
+  transform: scale(1.15);
+}
+
+
+
