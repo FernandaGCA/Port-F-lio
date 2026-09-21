@@ -305,6 +305,8 @@ obterLocalizacao();
  </script>
 
 
+
+
     <!-- Painel de Icones -->
     <div class="icon-bar">
 	
@@ -331,11 +333,100 @@ obterLocalizacao();
 </body>
 </html>
 
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <title>Player NANA</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+  <style>
+    body{background:#111;color:#eee;font-family:Arial, sans-serif;display:flex;justify-content:center;align-items:center;height:100vh}
+    .player{background:#222;padding:20px 30px;border-radius:14px;box-shadow:0 6px 20px rgba(0,0,0,0.6);text-align:center;width:320px}
+    .player h2{margin-bottom:6px;font-size:22px}
+    .player h3{margin:0;font-size:16px;font-weight:400;color:#bbb}
+    .controls{display:flex;justify-content:center;gap:25px;margin-top:20px}
+    .controls button{background:#333;color:#fff;border:none;padding:14px;border-radius:50%;font-size:18px;cursor:pointer;transition:0.3s}
+    .controls button:hover{background:#555}
+    audio{display:none}
+  </style>
+</head>
+<body>
+  <div class="player">
+    <h2 id="track-title">NANA</h2>
+    <h3 id="track-artist">Black Stones</h3>
+
+    <div class="controls"> 
+      <button class="prev"><i class="fa fa-backward"></i></button>
+      <button class="play-pause"><i class="fa fa-play"></i></button>
+      <button class="next"><i class="fa fa-forward"></i></button>
+    </div>
+
+    <!-- Áudio -->
+    <audio id="audio"></audio>
+  </div>
+
+  <script>
+    const audio = document.getElementById("audio");
+    const playPauseBtn = document.querySelector(".play-pause i");
+    const title = document.getElementById("track-title");
+    const artist = document.getElementById("track-artist");
+
+    // 🎶 Playlist com duas músicas
+    const playlist = [
+      {src: "black_stones.mp3", title: "NANA", artist: "Black Stones"},
+      {src: "trapnest.mp3", title: "NANA", artist: "Trapnest"}
+    ];
+
+    let currentTrack = 0;
+
+    function loadTrack(index){
+      audio.src = playlist[index].src;
+      title.textContent = playlist[index].title;
+      artist.textContent = playlist[index].artist;
+    }
+
+    function playTrack(){
+      audio.play();
+      playPauseBtn.classList.remove("fa-play");
+      playPauseBtn.classList.add("fa-pause");
+    }
+
+    function pauseTrack(){
+      audio.pause();
+      playPauseBtn.classList.remove("fa-pause");
+      playPauseBtn.classList.add("fa-play");
+    }
+
+    document.querySelector(".play-pause").addEventListener("click", ()=>{
+      if(audio.paused){ playTrack(); } else { pauseTrack(); }
+    });
+
+    document.querySelector(".prev").addEventListener("click", ()=>{
+      currentTrack = (currentTrack - 1 + playlist.length) % playlist.length;
+      loadTrack(currentTrack);
+      playTrack();
+    });
+
+    document.querySelector(".next").addEventListener("click", ()=>{
+      currentTrack = (currentTrack + 1) % playlist.length;
+      loadTrack(currentTrack);
+      playTrack();
+    });
+
+    // Carregar a primeira música ao abrir
+    loadTrack(currentTrack);
+  </script>
+</body>
+</html>
 
 body {
+	background: url('tela.jpg');
+	background-repeat: no-repeat;  /* Evita que a imagem se repita */
+	background-size: cover;        /* Faz a imagem cobrir toda a tela */
+    background-position:flex-direction;   /* flexivel a imagem */
+  
   margin: 0;
   font-family: Arial, sans-serif;
-  background-color: #333;
   color: white;
   display: flex;
   justify-content: center;
@@ -360,7 +451,7 @@ body {
 /* Horas */
 .clock-widget {
   flex: 2;
-  background-color: #222;
+  background-color: rgba(0, 0, 0, 0.75);
   border-radius: 10px;
   padding: 20px;
 
@@ -386,7 +477,7 @@ body {
 /* Player */
 .player {
   flex: 2;
-  background-color: #222;
+  background-color: rgba(0, 0, 0, 0.75);
   border-radius: 10px;
   padding: 20px;
 
@@ -396,7 +487,7 @@ body {
   justify-content: center;
 }
 
-    .player{background:#222;padding:20px 30px;border-radius:14px;box-shadow:0 6px 20px rgba(0,0,0,0.6);text-align:center;width:320px}
+    .player{background-color: rgba(0, 0, 0, 0.75);padding:20px 30px;border-radius:14px;box-shadow:0 6px 20px rgba(0,0,0,0.6);text-align:center;width:320px}
     .player h2{margin-bottom:6px;font-size:22px}
     .player h3{margin:0;font-size:16px;font-weight:400;color:#bbb}
     .controls{display:flex;justify-content:center;gap:25px;margin-top:20px}
@@ -420,7 +511,7 @@ body {
 /* Terceiro bloco */
 .weather-widget {
   flex: 2;
-  background-color: #222;
+  background-color: rgba(0, 0, 0, 0.75);
   border-radius: 10px;
   padding: 20px;
 
@@ -445,7 +536,7 @@ body {
   align-items: center;
 
   gap: 20px;
-  background-color: #222;
+  background-color: rgba(0, 0, 0, 0.40); /* Fundo preto com 40% de opacidade */
   padding: 10px 20px;
   box-sizing: border-box;
   z-index: 9999;
@@ -477,6 +568,7 @@ body {
 .icon-bar .icon img:hover {
   transform: scale(1.15);
 }
+
 
 
 
